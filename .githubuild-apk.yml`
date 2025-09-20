@@ -1,0 +1,33 @@
+ame: Build APK
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y git zip unzip openjdk-8-jdk python3-pip
+        sudo apt install -y autoconf libtool pkg-config zlib1g-dev
+        sudo apt install -y libncurses5-dev libncursesw5-dev libtinfo5
+        sudo apt install -y cmake libffi-dev libssl-dev
+    - name: Install Python dependencies
+      run: |
+        pip install buildozer cython
+        pip install kivy[base]
+    - name: Build APK
+      run: |
+        buildozer android debug
+    - name: Upload APK
+      uses: actions/upload-artifact@v2
+      with:
+        name: christianx-apk
+        path: bin/*.apk
+```yaml
+n
+```
