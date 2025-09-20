@@ -1,0 +1,7 @@
+kivy>=2.1.0
+pyjnius>=1.4.0
+plyer>=2.1.0
+requests>=2.28.0
+speechrecognition>=3.10.0
+gtts>=2.3.0
+pygame>=2.1.0
